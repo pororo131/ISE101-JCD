@@ -1,0 +1,20 @@
+from kivy.app import App
+from kivy.uix.gridlayout import GridLayout
+from kivy.uix.button import Button
+
+class GridDemo(App):
+    def build(self):
+        layout = GridLayout(cols=3, spacing=5, padding=5)  # 3 columns for 3x3 grid
+        for i in range(1, 10):  # 9 buttons total
+            btn = Button(text=f"Button {i}")
+            btn.bind(on_press=self.on_press_button)
+            layout.add_widget(btn)
+        return layout
+
+    def on_press_button(self, instance):
+        print(f"You clicked: {instance.text}")
+        # Change background color (RGBA: Red, Green, Blue, Alpha)
+        instance.background_color = (0, 1, 0, 1)  # green
+
+if __name__ == "__main__":
+    GridDemo().run()
